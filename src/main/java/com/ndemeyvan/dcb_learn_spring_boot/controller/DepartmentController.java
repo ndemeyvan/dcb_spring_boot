@@ -5,6 +5,7 @@ import com.ndemeyvan.dcb_learn_spring_boot.services.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -14,7 +15,7 @@ public class DepartmentController {
     private DepartmentService departmentService;
 
     @PostMapping("/departments")
-    public DepartmentEntity saveDepartment(@RequestBody  DepartmentEntity departmentEntity){
+    public DepartmentEntity saveDepartment(@Valid @RequestBody  DepartmentEntity departmentEntity){
         return departmentService.saveDepartment(departmentEntity);
     }
     @GetMapping("/departments")
