@@ -2,6 +2,8 @@ package com.ndemeyvan.dcb_learn_spring_boot.controller;
 
 import com.ndemeyvan.dcb_learn_spring_boot.entities.DepartmentEntity;
 import com.ndemeyvan.dcb_learn_spring_boot.services.DepartmentService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,13 +15,16 @@ public class DepartmentController {
 
     @Autowired
     private DepartmentService departmentService;
+    private Logger LOGGER = LoggerFactory.getLogger(DepartmentController.class);
 
     @PostMapping("/departments")
     public DepartmentEntity saveDepartment(@Valid @RequestBody  DepartmentEntity departmentEntity){
+        LOGGER.info("### This is inside save department controller");
         return departmentService.saveDepartment(departmentEntity);
     }
     @GetMapping("/departments")
     public List<DepartmentEntity> getListOfDepartment(){
+        LOGGER.info("### This is inside get list of department controller");
             return departmentService.getListOfDepartment();
     }
 
